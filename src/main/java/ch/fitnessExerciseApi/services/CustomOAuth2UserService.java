@@ -51,7 +51,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
                 .claim("name", name)
                 .claim("provider", registrationId)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
+                .setExpiration(new Date(System.currentTimeMillis() + 604800000)) // 7 days in milliseconds
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
 
