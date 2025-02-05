@@ -1,8 +1,8 @@
-package ch.restapiTemplate.services;
+package ch.fitnessExerciseApi.services;
 
-import ch.restapiTemplate.models.CustomOAuth2User;
-import ch.restapiTemplate.models.User;
-import ch.restapiTemplate.repositories.UserRepository;
+import ch.fitnessExerciseApi.models.CustomOAuth2User;
+import ch.fitnessExerciseApi.models.User;
+import ch.fitnessExerciseApi.repositories.UserRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

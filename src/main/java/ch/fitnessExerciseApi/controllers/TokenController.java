@@ -1,4 +1,4 @@
-package ch.restapiTemplate.controllers;
+package ch.fitnessExerciseApi.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

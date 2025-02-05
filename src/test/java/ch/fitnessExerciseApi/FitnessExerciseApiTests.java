@@ -1,10 +1,10 @@
-package ch.restapiTemplate;
+package ch.fitnessExerciseApi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RestApiTemplateTests {
+class FitnessExerciseApiTests {
 
     @Test
     void contextLoads() {

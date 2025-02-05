@@ -1,7 +1,7 @@
-package ch.restapiTemplate.controllers;
+package ch.fitnessExerciseApi.controllers;
 
-import ch.restapiTemplate.models.GroceryItem;
-import ch.restapiTemplate.services.GroceryService;
+import ch.fitnessExerciseApi.models.GroceryItem;
+import ch.fitnessExerciseApi.services.GroceryService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;

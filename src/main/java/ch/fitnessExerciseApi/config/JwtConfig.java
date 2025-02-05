@@ -1,4 +1,4 @@
-package ch.restapiTemplate.config;
+package ch.fitnessExerciseApi.config;
 
 import io.jsonwebtoken.security.Keys;
 import javax.crypto.SecretKey;

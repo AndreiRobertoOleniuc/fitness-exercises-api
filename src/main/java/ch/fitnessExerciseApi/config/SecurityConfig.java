@@ -1,4 +1,4 @@
-package ch.restapiTemplate.config;
+package ch.fitnessExerciseApi.config;
 
 import java.util.Collections;
 import javax.crypto.SecretKey;
@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
 
-import ch.restapiTemplate.services.CustomOAuth2UserService;
+import ch.fitnessExerciseApi.services.CustomOAuth2UserService;
 
 @Configuration
 public class SecurityConfig {

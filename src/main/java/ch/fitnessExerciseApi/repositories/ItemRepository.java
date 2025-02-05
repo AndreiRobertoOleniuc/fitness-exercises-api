@@ -1,6 +1,6 @@
-package ch.restapiTemplate.repositories;
+package ch.fitnessExerciseApi.repositories;
 
-import ch.restapiTemplate.models.GroceryItem;
+import ch.fitnessExerciseApi.models.GroceryItem;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

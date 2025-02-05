@@ -1,4 +1,4 @@
-package ch.restapiTemplate.config;
+package ch.fitnessExerciseApi.config;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.MapConfig;

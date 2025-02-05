@@ -1,7 +1,7 @@
-package ch.restapiTemplate.services;
+package ch.fitnessExerciseApi.services;
 
-import ch.restapiTemplate.models.GroceryItem;
-import ch.restapiTemplate.repositories.ItemRepository;
+import ch.fitnessExerciseApi.models.GroceryItem;
+import ch.fitnessExerciseApi.repositories.ItemRepository;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.cache.annotation.CacheEvict;

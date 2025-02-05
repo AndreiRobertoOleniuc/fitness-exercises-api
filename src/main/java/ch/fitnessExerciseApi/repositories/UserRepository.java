@@ -1,6 +1,6 @@
-package ch.restapiTemplate.repositories;
+package ch.fitnessExerciseApi.repositories;
 
-import ch.restapiTemplate.models.User;
+import ch.fitnessExerciseApi.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.Optional;
 
