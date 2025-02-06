@@ -37,4 +37,9 @@ public class ExerciseService {
     public void delete(String id) {
         exerciseRepository.deleteById(id);
     }
+    
+    @Cacheable(value = "exerciseCache", key = "#searchTerm")
+    public List<Exercise> search(String searchTerm) {
+        return exerciseRepository.search(searchTerm);
+    }
 }

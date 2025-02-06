@@ -31,16 +31,10 @@ public class ExerciseController {
     public Optional<Exercise> getExerciseById(@PathVariable("id") String id) {
         return exerciseService.findById(id);
     }
-
-    @PostMapping
-    @Operation(summary = "Create an Exercise", description = "Creates a new Exercise")
-    public Exercise addExercise(@RequestBody Exercise exercise) {
-        return exerciseService.save(exercise);
-    }
-
-    @DeleteMapping("/{id}")
-    @Operation(summary = "Delete an Exercise", description = "Deletes an Exercise by id")
-    public void deleteExercise(@PathVariable("id") String id) {
-        exerciseService.delete(id);
+    
+    @GetMapping("/search")
+    @Operation(summary = "Search Exercises", description = "Search exercises by name, mechanic, equipment, muscles and category")
+    public List<Exercise> searchExercises(@RequestParam("q") String query) {
+        return exerciseService.search(query);
     }
 }
