@@ -14,8 +14,8 @@ public class SwaggerConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("<projectName>")
+                        .title("Fitness Exercise API")
                         .version("1.0")
-                        .description("API documentation for <projectName>"));
+                        .description("API documentation for Fitness Exercise API"));
     }
 }
