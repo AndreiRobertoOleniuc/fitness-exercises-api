@@ -3,6 +3,9 @@ package ch.fitnessExerciseApi.controllers;
 import ch.fitnessExerciseApi.models.User;
 import ch.fitnessExerciseApi.repositories.UserRepository;
 import io.jsonwebtoken.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,6 +33,12 @@ public class RefreshTokenController {
         this.jwtValidityInMillis = jwtValidityInHours * 3600000; // Convert hours to milliseconds
     }
 
+    @Operation(summary = "Refresh JWT Token", description = "Refresh the JWT token using the provided refresh token")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Tokens refreshed successfully"),
+            @ApiResponse(responseCode = "400", description = "Missing refresh token or jwt token"),
+            @ApiResponse(responseCode = "401", description = "Invalid JWT token or refresh token")
+    })
     @PostMapping
     public ResponseEntity<?> refreshToken(@RequestBody Map<String, String> request) {
         String incomingRefreshToken = request.get("refreshToken");

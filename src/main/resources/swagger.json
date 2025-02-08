@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "FlavourGenie API",
-    "description": "API documentation for FlavourGenie",
+    "title": "Fitness Exercise API",
+    "description": "API documentation for Fitness Exercise API",
     "version": "1.0"
   },
   "servers": [
@@ -17,47 +17,27 @@
       "description": "Token API"
     },
     {
-      "name": "Grocery",
-      "description": "Grocery API"
+      "name": "Exercise",
+      "description": "Exercise API"
     }
   ],
   "paths": {
-    "/api/grocery": {
-      "get": {
-        "tags": [
-          "Grocery"
-        ],
-        "summary": "Get all Groceries",
-        "description": "Get all Groceries which were created by Users",
-        "operationId": "get-grocery",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/GroceryItem"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
+    "/refresh": {
       "post": {
         "tags": [
-          "Grocery"
+          "refresh-token-controller"
         ],
-        "summary": "Create a Grocery",
-        "description": "Create a Grocery with defined request body",
-        "operationId": "post-grocery",
+        "summary": "Refresh JWT Token",
+        "description": "Refresh the JWT token using the provided refresh token",
+        "operationId": "refreshToken",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GroceryItem"
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
               }
             }
           },
@@ -65,7 +45,34 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Tokens refreshed successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing refresh token or jwt token",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid JWT token or refresh token",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
           }
         }
       }
@@ -76,7 +83,7 @@
           "Token"
         ],
         "summary": "Retrieve Token",
-        "description": "retrieve JWT Token user logged in with",
+        "description": "Retrieve JWT and Refresh Token for the logged in user",
         "operationId": "get-token",
         "responses": {
           "200": {
@@ -84,9 +91,98 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object"
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exercise": {
+      "get": {
+        "tags": [
+          "Exercise"
+        ],
+        "summary": "Get all Exercises",
+        "description": "Returns all Exercises",
+        "operationId": "getAllExercises",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Exercise"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exercise/{id}": {
+      "get": {
+        "tags": [
+          "Exercise"
+        ],
+        "summary": "Get an Exercise",
+        "description": "Returns a specific Exercise by id",
+        "operationId": "getExerciseById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Exercise"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/exercise/search": {
+      "get": {
+        "tags": [
+          "Exercise"
+        ],
+        "summary": "Search Exercises",
+        "description": "Search exercises by name, mechanic, equipment, muscles and category",
+        "operationId": "searchExercises",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Exercise"
                   }
                 }
               }
@@ -98,7 +194,7 @@
   },
   "components": {
     "schemas": {
-      "GroceryItem": {
+      "Exercise": {
         "type": "object",
         "properties": {
           "id": {
@@ -107,12 +203,44 @@
           "name": {
             "type": "string"
           },
-          "quantity": {
-            "type": "integer",
-            "format": "int32"
+          "force": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string"
+          },
+          "mechanic": {
+            "type": "string"
+          },
+          "equipment": {
+            "type": "string"
+          },
+          "primaryMuscles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "secondaryMuscles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "instructions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "category": {
             "type": "string"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }
