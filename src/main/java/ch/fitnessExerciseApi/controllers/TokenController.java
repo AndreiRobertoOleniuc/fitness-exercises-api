@@ -19,10 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class TokenController {
 
     @GetMapping()
-    @Operation(summary = "Retrieve Token", description = "retrieve JWT Token user logged in with", operationId = "get-token")
+    @Operation(summary = "Retrieve Token", description = "Retrieve JWT and Refresh Token for the logged in user", operationId = "get-token")
     @ResponseBody
     public ResponseEntity<String> token(@AuthenticationPrincipal OAuth2User oAuth2User) {
         String jwtToken = (String) oAuth2User.getAttributes().get("jwtToken");
+        String refreshToken = (String) oAuth2User.getAttributes().get("refreshToken");
 
         String html = "<!DOCTYPE html>\n"
                 + "<html>\n"
@@ -31,12 +32,14 @@ public class TokenController {
                 + "  <title>Token</title>\n"
                 + "  <script type='text/javascript'>\n"
                 + "    window.onload = function() {\n"
-                + "      window.location.href = 'loginApp://token?jwtToken=" + jwtToken + "';\n"
+                + "      window.location.href = 'loginApp://token?jwtToken=" + jwtToken
+                + "&refreshToken=" + refreshToken + "';\n"
                 + "    };\n"
                 + "  </script>\n"
                 + "</head>\n"
                 + "<body>\n"
-                + "  <p>"+jwtToken+"</p>\n"
+                + "  <p>Access Token: " + jwtToken + "</p>\n"
+                + "  <p>Refresh Token: " + refreshToken + "</p>\n"
                 + "</body>\n"
                 + "</html>";
 

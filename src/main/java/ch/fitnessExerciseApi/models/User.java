@@ -17,6 +17,7 @@ public class User implements Serializable { // implements Serializable
     private String name;
     private String provider;
     private String providerId;
+    private String refreshToken;
 
     // Getters and setters
     public String getId() {
@@ -58,4 +59,8 @@ public class User implements Serializable { // implements Serializable
     public void setProviderId(String providerId) {
         this.providerId = providerId;
     }
+
+    public String getRefreshToken() { return refreshToken; }
+
+    public void setRefreshToken(String refreshToken) { this.refreshToken = refreshToken; }
 }
