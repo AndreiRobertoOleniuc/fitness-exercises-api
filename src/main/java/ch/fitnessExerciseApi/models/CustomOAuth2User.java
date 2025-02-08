@@ -2,10 +2,15 @@ package ch.fitnessExerciseApi.models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
+
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Map;
 
-public class CustomOAuth2User implements OAuth2User {
+public class CustomOAuth2User implements OAuth2User,Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L; // added serialVersionUID
 
     private final Collection<? extends GrantedAuthority> authorities;
     private final Map<String, Object> attributes;

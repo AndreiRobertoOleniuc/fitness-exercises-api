@@ -3,10 +3,14 @@ package ch.fitnessExerciseApi.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
 @Document("Exercise")
-public class Exercise {
+public class Exercise implements Serializable { // implements Serializable
+    @Serial
+    private static final long serialVersionUID = 1L; // added serialVersionUID
 
     @Id
     private final String id;
