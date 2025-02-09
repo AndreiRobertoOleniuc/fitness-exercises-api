@@ -1,9 +1,8 @@
 package ch.fitnessExerciseApi.repositories;
 
 import ch.fitnessExerciseApi.models.Exercise;
-
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
@@ -17,5 +16,5 @@ public interface ExerciseRepository extends MongoRepository<Exercise, String> {
            " {'secondaryMuscles': {$regex: ?0, $options: 'i'}}, " +
            " {'category': {$regex: ?0, $options: 'i'}} " +
            "] }")
-    List<Exercise> search(String searchTerm);
+    Page<Exercise> search(String searchTerm, Pageable pageable);
 }
