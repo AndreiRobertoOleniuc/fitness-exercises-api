@@ -14,7 +14,7 @@ FROM openjdk:21-jdk-slim
 WORKDIR /app
 
 # Copy the packaged JAR from the build stage
-COPY --from=build /app/target/Fitness-Exercise-Api app.jar
+COPY --from=build /app/target/Fitness-Exercise-Api.jar app.jar
 
 # Expose the port your app listens on (default 8080)
 EXPOSE 8080
