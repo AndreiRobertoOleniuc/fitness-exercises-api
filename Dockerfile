@@ -1,5 +1,5 @@
 # ---- Build Stage ----
-FROM maven:3.9.8-eclipse-temurin-21 AS build
+FROM maven:3.9.9-eclipse-temurin-21-jammy AS build
 WORKDIR /app
 
 # Copy pom.xml and source code
@@ -10,7 +10,8 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # ---- Runtime Stage ----
-FROM openjdk:21-jdk-slim
+# Use an ARM-compatible JRE image
+FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 
 # Copy the packaged JAR from the build stage
