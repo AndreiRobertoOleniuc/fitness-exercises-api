@@ -9,9 +9,12 @@ import org.springframework.context.annotation.Configuration;
 public class HazelcastConfiguration {
     @Bean
     public Config hazelcastConfig() {
-        return new Config()
-                .addMapConfig(new MapConfig()
-                        .setName("default")
-                        .setTimeToLiveSeconds(3600)); // Entries expire after 1 hour
+        Config config = new Config();
+        // Enable the Jet engine
+        config.getJetConfig().setEnabled(true);
+        config.addMapConfig(new MapConfig()
+                .setName("default")
+                .setTimeToLiveSeconds(3600)); // Entries expire after 1 hour
+        return config;
     }
 }
